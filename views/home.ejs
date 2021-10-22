@@ -1,0 +1,12 @@
+<%- include('./partials/header.ejs'); -%>
+
+ 
+<% if(user){ %> 
+<h1>Username: <%= user.username %> <br>
+Mail: <%= user.email %> 
+</h1>
+<% } %> 
+<h1>Homepage</h1>
+
+
+<%- include('./partials/footer.ejs'); -%>

@@ -1,0 +1,18 @@
+<%- include('./partials/header.ejs') -%>
+<form action="/question" method="post">
+    <% if(questionList) { %>
+        <% for(i=0;i<questionList.length;i++) { %>
+            <h1> <%= questionList[i].question %> </h1><br>
+            Not Interested
+            <input type="radio" value="1" name="ans<%= i+1 %>" id="ans<%= i+1 %>">
+            <input type="radio" value="2" name="ans<%= i+1 %>" id="ans<%= i+1 %>">
+            <input type="radio" value="3" name="ans<%= i+1 %>" id="ans<%= i+1 %>">
+            <input type="radio" value="4" name="ans<%= i+1 %>" id="ans<%= i+1 %>">
+            <input type="radio" value="5" name="ans<%= i+1 %>" id="ans<%= i+1 %>">
+            Extremely interested
+        <% } %>
+        <br>
+        <input type="submit" value="submit">
+    <% } %>  
+</form>
+<%- include('./partials/footer.ejs') -%> 
