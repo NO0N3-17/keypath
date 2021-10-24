@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const { loginModel } = require('../model/model')
+const { loginModel , interestModel, adminModel } = require('../model/model')
 const cookie = require('cookie-parser')
 
 module.exports.Homepage = (req, res) => {
@@ -12,8 +12,6 @@ module.exports.loginGet = (req, res) => {
 
 module.exports.loginPost = async (req, res) => {
     const { email , password } = req.body
-    // const user = await loginmodel.find({ email });
-    // res.render('home')
     const user = await loginModel.login(email,password)
     const tokenAge = 24 * 60 * 60;
     console.log(user);
@@ -38,21 +36,38 @@ module.exports.registerPost = (req, res) => {
     res.redirect('/login')
 }
 
+//Domain
 
 module.exports.domainGet = (req, res) => {
     res.render('domain')
+}
+
+module.exports.webdevGet = (req, res) => {
+    res.render('webdev')
+}
+
+module.exports.gamedevGet = (req, res) => {
+    res.render('gamedev')
+}
+
+module.exports.machinelearnGet = (req, res) => {
+    res.render('ml')
+}
+
+module.exports.datascienceGet = (req, res) => {
+    res.render('datascience')
 }
 
 module.exports.queriesGet = (req, res) => {
     res.render('queries')
 }
 
-module.exports.questionGet = (req, res) => {
-    res.render('question')
+module.exports.queriesPost = (req, res) => {
+    res.redirect('queries')
 }
 
-module.exports.questionPost = (req, res) => {
-   res.send("heeS");
+module.exports.questionGet = (req, res) => {
+    res.render('question')
 }
 
 
@@ -68,4 +83,37 @@ module.exports.questionaddPost = (req, res) => {
 
 module.exports.mentorGet = (req, res) => {
     res.render('mentor')
+}
+
+
+module.exports.resultPost = (req, res) => {
+    res.render('result')
+}
+
+module.exports.adminGet = (req, res) => {
+    res.render('admin')
+}
+
+module.exports.adminPost = async(req, res) => {
+    const { email , password } = req.body
+    const user = await adminModel.login(email,password)
+    const tokenAge = 24 * 60 * 60;
+    console.log(user);
+    const id = user._id;
+    console.log(id);
+    const token = jwt.sign({ id }, 'ThisisOurProject' ,{ expiresIn: tokenAge });
+    res.cookie('jwt', token,{ httpOnly: true,maxAge: tokenAge * 1000 });
+    res.redirect("/questionadd")
+}
+
+module.exports.queriesAdminGet = async(req, res) => {
+    res.render('queriesdisplay')
+}
+
+module.exports.responseGet = async(req, res) =>{
+    res.render('response')
+}
+
+module.exports.responsePost = async(req, res) =>{
+    res.redirect('/admin/queries');
 }

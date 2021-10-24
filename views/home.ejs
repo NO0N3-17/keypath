@@ -1,12 +1,16 @@
 <%- include('./partials/header.ejs'); -%>
 
- 
 <% if(user){ %> 
-<h1>Username: <%= user.username %> <br>
-Mail: <%= user.email %> 
+<div><h1> Welcome <%= user.username %>, </h1></div>
 </h1>
 <% } %> 
-<h1>Homepage</h1>
+<div class="grid-container">
+    <a href="/domain/machinelearning"><div class="grid-item">Machine Learning</div></a>
+    <a href="/domain/gamedev"><div class="grid-item">Game Development</div></a>
+    <a href="/domain/datascience"><div class="grid-item">Data Science</div></a>
+    <a href="/domain/webdev"><div class="grid-item">Web Development</div></a>
+</div>
+
 
 
 <%- include('./partials/footer.ejs'); -%>

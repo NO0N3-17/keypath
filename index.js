@@ -2,7 +2,7 @@ const bodyparser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const express= require("express");
 const DB = require('./database/db');
-const { checkUser } = require("./middlewares/authMiddlewares");
+const { checkUser, checkAdmin } = require("./middlewares/authMiddlewares");
 const router = require('./routes/router')
 
 app = express();
@@ -20,7 +20,7 @@ app.use(bodyparser.urlencoded({ extended:false }));
 
 app.set('view engine','ejs');
 
-app.get('*',checkUser);
+app.get('*',[ checkUser , checkAdmin ]);
 app.use(router);
 
 app.listen(port);

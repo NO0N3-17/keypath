@@ -1,18 +1,38 @@
 <%- include('./partials/header.ejs') -%>
-<form action="/question" method="post">
-    <% if(questionList) { %>
-        <% for(i=0;i<questionList.length;i++) { %>
-            <h1> <%= questionList[i].question %> </h1><br>
-            Not Interested
-            <input type="radio" value="1" name="ans<%= i+1 %>" id="ans<%= i+1 %>">
-            <input type="radio" value="2" name="ans<%= i+1 %>" id="ans<%= i+1 %>">
-            <input type="radio" value="3" name="ans<%= i+1 %>" id="ans<%= i+1 %>">
-            <input type="radio" value="4" name="ans<%= i+1 %>" id="ans<%= i+1 %>">
-            <input type="radio" value="5" name="ans<%= i+1 %>" id="ans<%= i+1 %>">
-            Extremely interested
-        <% } %>
-        <br>
-        <input type="submit" value="submit">
-    <% } %>  
-</form>
+<div class="container">
+
+    <div class="heading">
+        <h1><center>Personal Inventory Test</center></h1>
+        <pre><h4><center> We all find some activities or topics more interesting than others. 
+            Your interests and the way you like to work are important aspects to consider when deciding on a career path. 
+            Answer these questions to find out if you prefer directive, social, methodical, objective or innovative work.
+           <b> Rate these from 1 to 5 </b></center></h2></pre>
+        </div>
+</div>
+<div class="container">
+    <div class="question">
+        <div class="container">
+            <div class="form-group">
+
+                <form name="quizform" action="/result" method="post">
+                    <% if(questionList) { %>
+                        <% for(i=0;i<questionList.length;i++) { %>
+                            <h1> <%= i+1 %> . <%= questionList[i].question %> </h1>
+                            Disagree
+                            <input type="radio" value="2" name="<%= i+1 %>" class="form-check-input" required> <label for="<%= i+1 %>">1</label> 
+                            <input type="radio" value="4" name="<%= i+1 %>" class="form-check-input" required><label for="<%= i+1 %>">2</label> 
+                            <input type="radio" value="6" name="<%= i+1 %>" class="form-check-input" required><label for="<%= i+1 %>">3</label> 
+                            <input type="radio" value="8" name="<%= i+1 %>" class="form-check-input" required><label for="<%= i+1 %>">4</label> 
+                            <input type="radio" value="10" name="<%= i+1 %>" class="form-check-input" required><label for="<%= i+1 %>">5</label> 
+                            Agree
+                            <% } %>
+                            <br>
+                            <center><button class="btn btn-primary" type="submit">Submit</button></center>
+                            <% } %>  
+                        </form>
+                </div>
+            </div>
+    </div>
+    
+</div>
 <%- include('./partials/footer.ejs') -%> 

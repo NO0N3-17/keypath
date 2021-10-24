@@ -1,0 +1,23 @@
+<%- include('./partials/header.ejs') %>
+<div class="result" id="result" style="visibility: hidden;">
+<p>
+    <h1><a href="/domain/machinelearning">Machine Learning</a> <%= ml %>% </h1>
+    <h1><a href="/domain/webdev"> Web Development </a><%= wd %>%  </h1>
+    <h1><a href="/domain/gamedev"> Game Development </a><%= gd %>%  </h1>
+    <h1><a href="/domain/datascience"> Data Science </a><%= ds %>%  </h1>
+</p>
+    <div class="container">
+    <div id="myProgress">
+        <div id="myBar"></div>
+    </div>
+</div>
+
+<br>
+
+</div>
+<center>
+    <button class="btn btn-primary" onclick="move(`<%= [ml,wd,gd,ds] %>`)">Show Result</button> 
+</center>    
+
+
+<%- include('./partials/footer.ejs') %> 

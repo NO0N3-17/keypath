@@ -1,9 +1,15 @@
 <%- include('./partials/header.ejs'); -%>
-
-<form>
-  <label for="queries">Enter your queries here:</label><br />
-  <textarea id="queries" name="queries" width="550" height="300"></textarea><br />
-  <input type="submit" value="submit" />
-</form>
+<div class="container pagebg">
+  <form action="/queries" method="post">
+    <div class="form-group">
+      Email:
+      <input type="email" name="email" class="form-control" required>
+      <label for="exampleFormControlTextarea1">Enter Your Queries :</label>
+      <br><br>
+      <textarea class="form-control textarea" id="queries" name="queries" rows="3"></textarea>
+    </div><br>
+    <button type="submit" class="btn btn-primary" onclick="queriesSubmit()">Submit</button>
+  </form>
+</div>
 
 <%- include('./partials/footer.ejs'); -%>

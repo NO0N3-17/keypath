@@ -1,0 +1,72 @@
+<%- include('./partials/header.ejs'); -%>
+
+<div class="container">
+
+  <div class="querydisplay">
+    <div class="querytable">
+    <table class="table table-striped">
+      <tr>
+        <th>
+          Query Id
+        </th>
+        <th>
+          Email
+        </th>
+        <th>
+          Queries
+        </th>
+      </tr>
+
+      <% for(i=0;i<queries.length;i++) { %>
+        <!-- <form name="<%= i %> " action="/queries" method="post">  -->
+            
+          <tr>
+            <td><%= i %></td>
+            <td><%= email[i] %></td>
+            <td><%= queries[i] %></td>
+          </tr>
+          
+          <!-- Respond : <br>
+            <textarea name="<%= i %> " cols="30" rows="10"></textarea>
+            <br>
+            <input type="submit" value="Submit">
+            
+          </form> -->
+          <% } %> 
+      </table>
+      </div>
+    
+    <div class="form-group">
+      <form action="/response" method="post">
+      <label for="query"></label>
+        Select Query Id:
+        <select name="query" id="query" class="form-select">
+          <option selected> Choose the id </option>
+          <% for(i=0;i<queries.length;i++){ %> 
+          <option value="<%= queries[i] %>"> <%= i %> </option>
+          <% } %> 
+        </select><br>
+        Email (Select Query Id):
+        <select name="email" id="email" class="form-select">
+          <option selected> Choose the id </option>
+          <% for(i=0;i<queries.length;i++){ %> 
+          <option value="<%= email[i] %>"> <%= i %> </option>
+          <% } %> 
+        </select><br>
+        <label for="response">Response:</label>
+        <textarea name="response" id="response" rows="5" class="form-control textarea"></textarea><br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      </div>
+    </div>
+  </div>
+    
+<%- include('./partials/footer.ejs'); -%>
+
+
+<!-- <select class="form-select" aria-label="Default select example">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select> -->

@@ -1,15 +1,23 @@
 <%- include('./partials/header.ejs') %>
 
-<form action="/questionadd" method="post">
-    Question : <br>
-    <textarea id="question" name="question" rows="4" cols="50"></textarea> <br>
-    ML/AI    <input type="radio" value="ml" name="field"><br>
-    web    <input type="radio" value="web" name="field"><br>
-    GameDev    <input type="radio" value="gd" name="field"><br>
-    Data Science    <input type="radio" value="ds" name="field"><br>
-    Common   <input type="radio" value="common" name="field"><br>
-    <input type="submit" value="Add Question">
 
-</form>
+<div class="questionadd">
+<div class="form-group">
+
+    <form action="/questionadd" method="post">
+        Question : <br>
+        <textarea id="question" name="question" rows="4" cols="50" class="form-control textarea"></textarea> <br>
+        <div class="form-check">
+            ML/AI    <input type="radio" value="ml" name="field" class="form-check-input"><br>
+            web    <input type="radio" value="web" name="field" class="form-check-input"><br>
+            GameDev    <input type="radio" value="gd" name="field" class="form-check-input"><br>
+            Data Science    <input type="radio" value="ds" name="field" class="form-check-input"><br>
+            Common   <input type="radio" value="common" name="field" class="form-check-input"><br>
+        </div>
+        <center><button type="submit" class="btn btn-primary">Add Question</button></center> 
+    </form>
+</div>
+</div>
+
 
 <%- include('./partials/footer.ejs') %> 
