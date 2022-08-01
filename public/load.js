@@ -1,27 +1,27 @@
-function move(val) {
+function move() {
     // for(j=0;j<val.length;j++){
 
-        var i=0
-        var b = val.split(',').map(Number);
-        var value = Math.max(...b);
-        console.log(value);
-        if (i == 0) {
-            i = 1;
-            var elem = document.getElementById("myBar");
-            var width = 1;
-            var id = setInterval(frame, 10);
-            function frame() {
-                if (width >= value) {
-                    clearInterval(id);
-                    i = 0;
-                } else {
-                    width++;
-                    elem.style.width = width + "%";
-                    elem.innerText = width + "%";
+        // var i=0
+        // var b = val.split(',').map(Number);
+        // var value = Math.max(...b);
+        // console.log(value);
+        // if (i == 0) {
+        //     i = 1;
+        //     var elem = document.getElementById("myBar");
+        //     var width = 1;
+        //     var id = setInterval(frame, 10);
+        //     function frame() {
+        //         if (width >= value) {
+        //             clearInterval(id);
+        //             i = 0;
+        //         } else {
+        //             width++;
+        //             elem.style.width = width + "%";
+        //             elem.innerText = width + "%";
                     
-                }
-            }
-        }
+        //         }
+        //     }
+        // }
         document.getElementById('result').style.visibility = "visible";
     // }
 }

@@ -87,6 +87,7 @@ module.exports.mentorGet = (req, res) => {
 
 
 module.exports.resultPost = (req, res) => {
+    
     res.render('result')
 }
 

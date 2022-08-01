@@ -6,35 +6,17 @@
       <table class="table">
           <% for(i=0;i<queries.length;i++) { %>
         <tr>
-          <!-- <th>
-            Query Id
-          </th> -->
           <th>
             Question
           </th>
-            <td><%= queries[i] %></td>
-         
+            <td><%= queries[i] %></td>         
         </tr>
-  
-        
-          <!-- <form name="<%= i %> " action="/queries" method="post">  -->
-              
             <tr>
-              <!-- <td><%= i %></td> -->
                <th>
             Answer
-          </th>
-            
-              <td><%= response[i] %></td>
-              
+          </th>            
+              <td><%= response[i] %></td>              
             </tr>
-            
-            <!-- Respond : <br>
-              <textarea name="<%= i %> " cols="30" rows="10"></textarea>
-              <br>
-              <input type="submit" value="Submit">
-              
-            </form> -->
             <% } %> 
         </table>
         

@@ -6,7 +6,7 @@
         <pre><h4><center> We all find some activities or topics more interesting than others. 
             Your interests and the way you like to work are important aspects to consider when deciding on a career path. 
             Answer these questions to find out if you prefer directive, social, methodical, objective or innovative work.
-           <b> Rate these from 1 to 5 </b></center></h2></pre>
+           <b> Rate these from 1 to 10 </b></center></h2></pre>
         </div>
 </div>
 <div class="container">
@@ -18,13 +18,18 @@
                     <% if(questionList) { %>
                         <% for(i=0;i<questionList.length;i++) { %>
                             <h1> <%= i+1 %> . <%= questionList[i].question %> </h1>
-                            Disagree
-                            <input type="radio" value="2" name="<%= i+1 %>" class="form-check-input" required> <label for="<%= i+1 %>">1</label> 
-                            <input type="radio" value="4" name="<%= i+1 %>" class="form-check-input" required><label for="<%= i+1 %>">2</label> 
-                            <input type="radio" value="6" name="<%= i+1 %>" class="form-check-input" required><label for="<%= i+1 %>">3</label> 
-                            <input type="radio" value="8" name="<%= i+1 %>" class="form-check-input" required><label for="<%= i+1 %>">4</label> 
-                            <input type="radio" value="10" name="<%= i+1 %>" class="form-check-input" required><label for="<%= i+1 %>">5</label> 
-                            Agree
+                            Not relatable
+                            <input type="radio" value="1" name="<%= i+1 %>" class="form-check-input" required> <label for="<%= i+1 %>">1</label> 
+                            <input type="radio" value="2" name="<%= i+1 %>" class="form-check-input" required><label for="<%= i+1 %>">2</label> 
+                            <input type="radio" value="3" name="<%= i+1 %>" class="form-check-input" required><label for="<%= i+1 %>">3</label> 
+                            <input type="radio" value="4" name="<%= i+1 %>" class="form-check-input" required><label for="<%= i+1 %>">4</label> 
+                            <input type="radio" value="5" name="<%= i+1 %>" class="form-check-input" required><label for="<%= i+1 %>">5</label> 
+                            <input type="radio" value="6" name="<%= i+1 %>" class="form-check-input" required> <label for="<%= i+1 %>">6</label> 
+                            <input type="radio" value="7" name="<%= i+1 %>" class="form-check-input" required><label for="<%= i+1 %>">7</label> 
+                            <input type="radio" value="8" name="<%= i+1 %>" class="form-check-input" required><label for="<%= i+1 %>">8</label> 
+                            <input type="radio" value="9" name="<%= i+1 %>" class="form-check-input" required><label for="<%= i+1 %>">9</label> 
+                            <input type="radio" value="10" name="<%= i+1 %>" class="form-check-input" required><label for="<%= i+1 %>">10</label> 
+                            Relatable
                             <% } %>
                             <br>
                             <center><button class="btn btn-primary" type="submit">Submit</button></center>

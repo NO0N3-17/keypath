@@ -2,6 +2,15 @@ const bcrypt = require('bcrypt');
 const { loginModel , questionModel ,insterestModel, interestModel, queriesModel, adminModel, responseModel } = require('../model/model');
 const jwt = require('jsonwebtoken');
 const cookie = require('cookie-parser');
+const axios = require('axios');
+const formData = require('form-data');
+const api  = axios.create({
+  baseURL: "http://127.0.0.1:5000/",
+  headers: {
+      'Content-Type': 'application/json',
+    },
+  withCredentials:true
+});
 
 
 // verify the web token to allow them to their site
@@ -62,23 +71,6 @@ const addingUsertodb = async(req, res ,next) => {
     next();
 }
 
-//checking User
-// const checkUser = (req, res, next) => {
-//     const token = req.cookies.jwt;
-//     if (token) {
-//       jwt.verify(token, 'ThisisOurProject', async (err, decodedToken) => {
-//         if (err) {
-//           next();
-//         } else {
-//           const user = await loginmodel.findById(decodedToken.id);
-//           req.session.user = user;
-//           next();
-//         }
-//       });
-//     } else {
-//       next();
-//     }
-//   };
 
 //checking User
 const checkUser = async(req, res, next) => {
@@ -141,48 +133,38 @@ const addQuestion = async(req, res, next) => {
 
 const evaluateAnswer = async(req, res, next) => {
     var body = req.body
-    console.log(body);
-    const que = await interestModel.find({}, { question:0 , _id:0 , __v:0 });
-    const queType = []
-    const answers = []
-    var ml=0,wd=0,gd=0,ds=0
-    Object.values(body).forEach(val => answers.push(val))
-    Object.values(que).forEach(val => {
-        queType.push(val.field);
-    });
-    console.log(answers);
-    console.log(queType);
-    for(i=0;i<answers.length;i++){
-        if(queType[i] == "ml"){
-            ml+=parseInt(answers[i])
-        }
-        else if(queType[i] == "web"){
-            wd+=parseInt(answers[i])
-        }
-        else if(queType[i] == "gd"){
-            gd+=parseInt(answers[i])
-        }
-        else if(queType[i] == "ds"){
-            ds+=parseInt(answers[i])
-        }
-        else{
-            ml+=parseInt(answers[i])
-            wd+=parseInt(answers[i])
-            gd+=parseInt(answers[i])
-            ds+=parseInt(answers[i])
 
-        }
-    if(i+1 === answers.length){
-      console.log("here");
-      console.log(ml,wd,gd,ds);
-      res.locals.ml=ml;
-      res.locals.wd=wd;
-      res.locals.gd=gd;
-      res.locals.ds=ds;
-      next();
+    var passdata={
+      detailedreport: body  
     }
-  }
-}
+    
+    const result = api.post('/resultanalysis',passdata)
+    .then((response) =>{
+      r=response.data['prediction']
+
+    res.locals.ml=false;
+    res.locals.wd=false;
+    res.locals.gd=false;
+    res.locals.ds=false;
+    if(r==='Webdev'){
+      res.locals.wd=true;
+    }
+    if(r==='DataScience'){
+      res.locals.ds=true;
+    }
+    if(r==='GameDev'){
+      res.locals.gd=true;
+    }
+    if(r==='MachineLearning'){
+      res.locals.ml=true;
+    }
+    next();
+    })
+    .catch((error) => {
+      console.log(error.err);
+    });
+    
+      }
 
 const addQueries = async(req, res, next) => {
   const { queries , email } = req.body

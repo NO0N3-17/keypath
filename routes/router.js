@@ -44,7 +44,8 @@ router.post('/questionadd',addQuestion,controller.questionaddPost);
 
 router.get('/mentor',controller.mentorGet);
 
-router.post('/result',[ requireAuth, evaluateAnswer , checkUser ,checkAdmin],controller.resultPost);
+router.post('/result',[ requireAuth , evaluateAnswer, checkUser ,checkAdmin],controller.resultPost);
+//
 
 router.get('/admin/queries',fetchQueries,controller.queriesAdminGet);
 

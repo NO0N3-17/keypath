@@ -9,7 +9,7 @@ app = express();
 
 DB();
 
-const port = 5000;
+const port = 8000;
 
 app.use(express.static('public'));
 
